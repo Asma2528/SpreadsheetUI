@@ -8,7 +8,7 @@ export const spreadsheetData = [
     assigned: "Sophie Choudhury",
     priority: "Medium",
     dueDate: "20-11-2024",
-    estValue: "62,00,000",
+    estValue: "62,00,000 ₹",
   },
   {
     jobRequest: "Update press kit for company redesign",
@@ -19,7 +19,7 @@ export const spreadsheetData = [
     assigned: "Tejas Pandey",
     priority: "High",
     dueDate: "30-10-2024",
-    estValue: "35,00,000",
+    estValue: "35,00,000 ₹",
   },
    {
     jobRequest: "Finalize user testing feedback for app update",
@@ -30,10 +30,10 @@ export const spreadsheetData = [
     assigned: "Rachel Lee",
     priority: "Medium",
     dueDate: "10-12-2024",
-    estValue: "4,750,000",
+    estValue: "4,750,000 ₹",
   },
    {
-    jobRequest: "Finalize user testing feedback for app updaDesign new features for the website",
+    jobRequest: "Design new features for the website",
     submitted: "10-01-2025",
     status: "Complete",
     submitter: "Emily Green",
@@ -41,7 +41,7 @@ export const spreadsheetData = [
     assigned: "Tom Wright",
     priority: "Low",
     dueDate: "15-01-2025",
-    estValue: "5,900,000",
+    estValue: "5,900,000 ₹",
   },
    {
     jobRequest: "Prepare financial report for Q4",
@@ -52,7 +52,7 @@ export const spreadsheetData = [
     assigned: "Kevin Smith",
     priority: "Low",
     dueDate: "30-01-2025",
-    estValue: "2,800,000",
+    estValue: "2,800,000 ₹",
   },
   // ... add more from screenshot if needed
 ];
