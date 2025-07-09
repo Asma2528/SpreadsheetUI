@@ -21,7 +21,7 @@ export const spreadsheetData = [
     dueDate: "30-10-2024",
     estValue: "35,00,000 ₹",
   },
-   {
+  {
     jobRequest: "Finalize user testing feedback for app update",
     submitted: "05-12-2024",
     status: "In-process",
@@ -32,7 +32,7 @@ export const spreadsheetData = [
     dueDate: "10-12-2024",
     estValue: "4,750,000 ₹",
   },
-   {
+  {
     jobRequest: "Design new features for the website",
     submitted: "10-01-2025",
     status: "Complete",
@@ -43,7 +43,7 @@ export const spreadsheetData = [
     dueDate: "15-01-2025",
     estValue: "5,900,000 ₹",
   },
-   {
+  {
     jobRequest: "Prepare financial report for Q4",
     submitted: "25-01-2025",
     status: "Blocked",

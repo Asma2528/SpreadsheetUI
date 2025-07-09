@@ -1,7 +1,11 @@
 import { FaRegShareSquare } from "react-icons/fa";
 import CustomExportIcon from "./CustomExportIcon";
 import { GoFilter } from "react-icons/go";
-import { TbArrowsSort, TbArrowsSplit, TbArrowsMoveVertical } from "react-icons/tb";
+import {
+  TbArrowsSort,
+  TbArrowsSplit,
+  TbArrowsMoveVertical,
+} from "react-icons/tb";
 import { VscEyeClosed } from "react-icons/vsc";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAnglesRight } from "@fortawesome/free-solid-svg-icons";
@@ -57,7 +61,6 @@ const MiddleTab = () => {
 
       {/* Right Side */}
       <div className="flex items-center space-x-2">
-        {/* Import */}
         <button
           className="flex items-center gap-0 border border-gray-300 px-2 py-2 bg-white text-black text-sm rounded hover:bg-gray-100"
           onClick={() => console.log("Import clicked")}
@@ -66,7 +69,6 @@ const MiddleTab = () => {
           Import
         </button>
 
-        {/* Export */}
         <button
           className="flex items-center gap-0 border border-gray-300 px-2 py-2 bg-white text-black text-sm rounded hover:bg-gray-100"
           onClick={() => console.log("Export clicked")}
@@ -75,7 +77,6 @@ const MiddleTab = () => {
           Export
         </button>
 
-        {/* Share */}
         <button
           className="flex items-center gap-1 border border-gray-300 px-3 py-2 bg-white text-black text-sm rounded hover:bg-gray-100"
           onClick={() => console.log("Share clicked")}
@@ -84,7 +85,6 @@ const MiddleTab = () => {
           Share
         </button>
 
-        {/* New Action */}
         <button
           className="flex items-center gap-1 px-3 py-2 bg-green-700 text-white text-sm rounded hover:bg-green-800"
           onClick={() => console.log("New Action clicked")}

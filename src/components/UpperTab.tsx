@@ -3,10 +3,9 @@ import { GoBell } from "react-icons/go";
 import { IoIosArrowForward } from "react-icons/io";
 
 const UpperTab = () => {
-const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-  console.log(`${e.target.value} searching...`);
-};
-
+  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    console.log(`${e.target.value} searching...`);
+  };
 
   const handleProfileClick = () => {
     console.log("Name: John Doe, Email: john.doe@companyname.com");
@@ -16,16 +15,29 @@ const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     <div className="flex justify-between items-center mx-2 h-[24] w-[343]">
       {/* Left side: Path + Dots */}
       <div className="flex items-center space-x-3 text-sm text-gray-500 ml-2">
-        <img src="/green-icon.png" alt="icon" className="w-5 h-5 object-contain block" />
-        <span onClick={() => console.log("Workspace clicked")} className="hover:text-gray-800 cursor-pointer">
+        <img
+          src="/green-icon.png"
+          alt="icon"
+          className="w-5 h-5 object-contain block"
+        />
+        <span
+          onClick={() => console.log("Workspace clicked")}
+          className="hover:text-gray-800 cursor-pointer"
+        >
           Workspace
         </span>
         <IoIosArrowForward className="text-base" />
-        <span onClick={() => console.log("Folder 2 clicked")} className="hover:text-gray-800 cursor-pointer">
+        <span
+          onClick={() => console.log("Folder 2 clicked")}
+          className="hover:text-gray-800 cursor-pointer"
+        >
           Folder 2
         </span>
         <IoIosArrowForward className="text-base" />
-        <span onClick={() => console.log("Spreadsheet 3 clicked")} className="text-black font-medium cursor-pointer">
+        <span
+          onClick={() => console.log("Spreadsheet 3 clicked")}
+          className="text-black font-medium cursor-pointer"
+        >
           Spreadsheet 3
         </span>
         <FiMoreHorizontal className="ml-2 text-gray-500 hover:text-gray-800 cursor-pointer" />
@@ -65,7 +77,9 @@ const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
           />
           <div className="text-sm">
             <div className="text-black font-medium">John Doe</div>
-            <div className="text-gray-500 text-xs">john.doe@companyname.com</div>
+            <div className="text-gray-500 text-xs">
+              john.doe@companyname.com
+            </div>
           </div>
         </div>
       </div>
