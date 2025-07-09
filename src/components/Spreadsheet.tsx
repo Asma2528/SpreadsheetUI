@@ -250,7 +250,7 @@ const Spreadsheet = () => {
               <FiRefreshCw className="absolute rotate-90 -right-6 text-red-500 text-sm" />
             </div>
           </div>
-        </div>
+        </div>  
 
         {/* Right Controls */}
         <div className="flex m-0 gap-x-[0.5px] items-center mr-2">
