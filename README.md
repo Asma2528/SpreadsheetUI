@@ -30,3 +30,26 @@ This project is a **static, front-end-only spreadsheet interface** built with **
 - ✅ All interactive elements are functional (log or change state)
 - 🔍 **Search, Notifications, User Avatar** in the top right
 - 🧾 **Organized clean code**, strictly typed, and well-structured
+
+## ⚠️ Trade-offs & Limitations
+
+- No data persistence — edits are lost on reload.
+- No backend integration (purely front-end UI prototype).
+
+## 🧑‍💻 Getting Started
+
+```bash
+# Clone the repo
+git clone https://github.com/yourusername/spreadsheet-ui.git
+
+# Navigate into the project
+cd spreadsheet-ui
+
+# Install dependencies
+npm install
+
+# Run the development server
+npm run dev
+
+The app will be available at http://localhost:5173.
+
