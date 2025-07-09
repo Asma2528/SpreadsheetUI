@@ -170,7 +170,7 @@ const Spreadsheet = () => {
 
   const handlePlusClick = () => {
     const newKey = `newCol${columns.length}`;
-    setColumns([...columns, { header: "New Column", key: newKey }]);
+    setColumns([...columns, { header: "", key: newKey }]);
     setVisibleColumns((prev) => new Set(prev).add(newKey));
     setData((prev) => prev.map((row) => ({ ...row, [newKey]: "" })));
     setColumnWidths((prev) => ({ ...prev, [newKey]: 124 }));
@@ -193,107 +193,113 @@ const Spreadsheet = () => {
 
   return (
     <>
+      <div className="relative w-full z-50">
+        {toggleOpen && (
+          <div
+            ref={dropdownRef}
+            className="absolute top-10 left-0 z-50 w-56 max-h-64 overflow-auto bg-white border border-gray-300 rounded shadow-lg p-2 space-y-1 text-sm"
+          >
+            <div className="font-semibold text-gray-600 border-b pb-1 mb-1">
+              Toggle Columns
+            </div>
+            {[...columns].map((col) =>
+              col.key === "index" || col.key === "empty" ? null : (
+                <label
+                  key={col.key}
+                  className="flex items-center space-x-2 hover:bg-gray-100 px-2 py-1 rounded cursor-pointer"
+                >
+                  <input
+                    type="checkbox"
+                    checked={visibleColumns.has(col.key)}
+                    onChange={() => handleColumnToggle(col.key)}
+                    className="form-checkbox h-4 w-4 text-blue-600"
+                  />
+                  <span className="text-gray-700 truncate">{col.header}</span>
+                </label>
+              )
+            )}
+          </div>
+        )}
+      </div>
+
       {/* Top Bar */}
       <div className="overflow-x-auto w-full">
-        <div className="min-w-[1000px] flex justify-between items-center text-sm border-t border-gray-300">
-          <div className="relative flex flex-row">
-            <div
-              className="w-[47px] h-10 flex justify-center items-center cursor-pointer"
-              onClick={() => setToggleOpen(!toggleOpen)}
-            >
-              <MdOutlineLegendToggle className="text-xl text-gray-700" />
-            </div>
-
-            {toggleOpen && (
+        <div className="w-full relative z-30">
+          {" "}
+          <div className="min-w-[1000px] flex justify-between items-center text-sm border-t border-gray-300 relative z-30">
+            <div className="relative flex flex-row z-30">
               <div
-                ref={dropdownRef}
-                className="absolute top-8 left-0 z-50 w-56 max-h-64 overflow-auto bg-white border border-gray-300 rounded shadow-lg p-2 space-y-1 text-sm"
+                className="w-[47px] h-10 flex justify-center items-center cursor-pointer"
+                onClick={() => setToggleOpen(!toggleOpen)}
               >
-                <div className="font-semibold text-gray-600 border-b pb-1 mb-1">
-                  Toggle Columns
+                <MdOutlineLegendToggle className="text-xl text-gray-700" />
+              </div>
+
+              {/* Left Toggle + Overview */}
+
+              <div
+                className="flex bg-gray-200 py-1 my-0"
+                style={{
+                  width:
+                    columnWidths.jobRequest +
+                    columnWidths.submitted +
+                    columnWidths.status +
+                    columnWidths.submitter,
+                }}
+              >
+                <div
+                  className="flex items-center bg-gray-100 px-2 py-1 my-0.5 ml-1 rounded-sm relative cursor-pointer hover:bg-gray-300"
+                  // jobRequest + submitted + status + submitter
+                >
+                  <img
+                    src="/download.png"
+                    alt="icon"
+                    className="w-4 h-4 mr-1"
+                  />
+                  <span className="text-gray-600 text-xs">
+                    Q3 Financial Overview
+                  </span>
+                  <FiRefreshCw className="absolute rotate-90 -right-6 text-red-500 text-sm" />
                 </div>
-                {[...columns].map((col) =>
-                  col.key === "index" || col.key === "empty" ? null : (
-                    <label
-                      key={col.key}
-                      className="flex items-center space-x-2 hover:bg-gray-100 px-2 py-1 rounded cursor-pointer"
-                    >
-                      <input
-                        type="checkbox"
-                        checked={visibleColumns.has(col.key)}
-                        onChange={() => handleColumnToggle(col.key)}
-                        className="form-checkbox h-4 w-4 text-blue-600"
-                      />
-                      <span className="text-gray-700 truncate">
-                        {col.header}
-                      </span>
-                    </label>
-                  )
-                )}
               </div>
-            )}
+            </div>
 
-            {/* Left Toggle + Overview */}
-
-            <div
-              className="flex bg-gray-200 py-1 my-0"
-              style={{
-                width:
-                  columnWidths.jobRequest +
-                  columnWidths.submitted +
-                  columnWidths.status +
-                  columnWidths.submitter,
-              }}
-            >
-              <div
-                className="flex items-center bg-gray-100 px-2 py-1 my-0.5 ml-1 rounded-sm relative cursor-pointer hover:bg-gray-300"
-                // jobRequest + submitted + status + submitter
-              >
-                <img src="/download.png" alt="icon" className="w-4 h-4 mr-1" />
-                <span className="text-gray-600 text-xs">
-                  Q3 Financial Overview
+            {/* Right Controls */}
+            <div className="flex m-0 gap-x-[0.5px] items-center mr-2">
+              <div className="w-[130px] bg-[#D2E0D4] px-2 py-2.5 justify-center cursor-pointer hover:bg-[#b0c5b7] flex items-center">
+                <TbArrowsSplit className="text-gray-400 rotate-90" />
+                <span className="text-gray-800 font-semibold text-sm px-1">
+                  ABC
                 </span>
-                <FiRefreshCw className="absolute rotate-90 -right-6 text-red-500 text-sm" />
+                <FiMoreHorizontal className="text-gray-400 text-sm" />
               </div>
-            </div>
-          </div>
 
-          {/* Right Controls */}
-          <div className="flex m-0 gap-x-[0.5px] items-center mr-2">
-            <div className="w-[130px] bg-[#D2E0D4] px-2 py-2.5 justify-center cursor-pointer hover:bg-[#b0c5b7] flex items-center">
-              <TbArrowsSplit className="text-gray-400 rotate-90" />
-              <span className="text-gray-800 font-semibold text-sm px-1">
-                ABC
-              </span>
-              <FiMoreHorizontal className="text-gray-400 text-sm" />
-            </div>
+              <div className="w-[260px] bg-[#DCCFFC] justify-center px-2 py-2.5  cursor-pointer hover:bg-[#c3b0f5] flex items-center">
+                <TbArrowsSplit className="text-white rotate-90" />
+                <span className="text-gray-800 font-semibold text-sm px-1">
+                  Answer a question
+                </span>
+                <FiMoreHorizontal className="text-gray-400 text-sm" />
+              </div>
 
-            <div className="w-[260px] bg-[#DCCFFC] justify-center px-2 py-2.5  cursor-pointer hover:bg-[#c3b0f5] flex items-center">
-              <TbArrowsSplit className="text-white rotate-90" />
-              <span className="text-gray-800 font-semibold text-sm px-1">
-                Answer a question
-              </span>
-              <FiMoreHorizontal className="text-gray-400 text-sm" />
-            </div>
+              <div className="w-[130px] bg-[#FAC2AF] justify-center px-2 py-2.5 cursor-pointer hover:bg-[#e9a995] flex items-center">
+                <TbArrowsSplit className="text-white rotate-90" />
+                <span className="text-gray-800 font-semibold text-sm px-1">
+                  Extract
+                </span>
+                <FiMoreHorizontal className="text-gray-400 text-sm" />
+              </div>
 
-            <div className="w-[130px] bg-[#FAC2AF] justify-center px-2 py-2.5 cursor-pointer hover:bg-[#e9a995] flex items-center">
-              <TbArrowsSplit className="text-white rotate-90" />
-              <span className="text-gray-800 font-semibold text-sm px-1">
-                Extract
-              </span>
-              <FiMoreHorizontal className="text-gray-400 text-sm" />
-            </div>
-
-            <div
-              className="flex items-center justify-center w-[130px] bg-[#e6e6e6] px-2 py-3 cursor-pointer hover:bg-[#cfcfcf] mr-2"
-              onClick={handlePlusClick}
-            >
-              <FiPlus className="text-gray-700 text-center  text-base" />
+              <div
+                className="flex items-center justify-center w-[130px] bg-[#e6e6e6] px-2 py-3 cursor-pointer hover:bg-[#cfcfcf] mr-2"
+                onClick={handlePlusClick}
+              >
+                <FiPlus className="text-gray-700 text-center  text-base" />
+              </div>
             </div>
           </div>
         </div>
       </div>
-
       <div className="flex flex-col h-[90vh] text-sm">
         <div className="overflow-auto flex-1 w-full">
           <div className="min-w-[1000px]">
